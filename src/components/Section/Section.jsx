@@ -5,6 +5,8 @@ import {
   SectionWrapper,
   MainTitle,
   SectionTitle,
+  Header,
+  Footer,
 } from './Section.styled';
 
 export const Section = ({ tag, mainTitle, title, children }) => {
@@ -12,13 +14,21 @@ export const Section = ({ tag, mainTitle, title, children }) => {
 
   switch (tag) {
     case 'header':
-      sectionContent = <header>{children}</header>;
+      sectionContent = (
+        <Header>
+          <Container>{children}</Container>
+        </Header>
+      );
       break;
     case 'main':
       sectionContent = <main>{children}</main>;
       break;
     case 'footer':
-      sectionContent = <footer>{children}</footer>;
+      sectionContent = (
+        <Footer>
+          <Container>{children}</Container>
+        </Footer>
+      );
       break;
     default:
       sectionContent = (
