@@ -1,20 +1,21 @@
 import { Section } from 'components/Section/Section';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Link } from './SharedLayout.styled';
 
 export const SharedLayout = () => {
   return (
     <>
       <Section tag={'header'}>
         <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/movies">Movies</NavLink>
+          <Link to="/">Home</Link>
+          <Link to="/movies">Movies</Link>
         </nav>
       </Section>
       <Section tag={'main'}>
         <Outlet />
       </Section>
       <Section tag={'footer'}>
-        <div>Footer</div>
+        <div>Created with love by student of GoIT</div>
       </Section>
     </>
   );
