@@ -1,20 +1,21 @@
+import { Section } from 'components/Section/Section';
 import { Outlet, NavLink } from 'react-router-dom';
 
 export const SharedLayout = () => {
   return (
     <>
-      <header>
+      <Section tag={'header'}>
         <nav>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/movies">Movies</NavLink>
         </nav>
-      </header>
-      <main>
+      </Section>
+      <Section tag={'main'}>
         <Outlet />
-      </main>
-      <footer>
+      </Section>
+      <Section tag={'footer'}>
         <div>Footer</div>
-      </footer>
+      </Section>
     </>
   );
 };
