@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const Header = styled.header`
+  padding: ${props => props.theme.spacing(3)} ${props => props.theme.spacing(0)};
+`;
+
+export const Footer = styled.header`
+  padding: ${props => props.theme.spacing(3)} ${props => props.theme.spacing(0)};
+`;
+
 export const SectionWrapper = styled.section`
   padding: ${props => props.theme.spacing(6)} ${props => props.theme.spacing(0)};
 `;
