@@ -3,8 +3,6 @@ import { Gallery } from './MovieGallery.styled';
 import { MovieGalleryItem } from './MovieGalleryItem/MovieGalleryItem';
 
 export const MovieGallery = ({ movies }) => {
-  console.log(movies);
-
   return (
     <Gallery>
       {movies.map(({ id, title, poster_path, name }) => (
