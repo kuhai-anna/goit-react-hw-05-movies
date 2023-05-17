@@ -12,6 +12,6 @@ export const GenresList = ({ genres }) => {
 
 GenresList.propTypes = {
   genres: PropTypes.array,
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  name: PropTypes.string,
 };
