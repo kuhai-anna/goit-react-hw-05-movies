@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/goit-react-hw-05-movies/static/css/main.17654e45.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.ee127981.js",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.42fb7e07.js",
     "static/media/sad-danbo-optim.jpeg": "/goit-react-hw-05-movies/static/media/sad-danbo-optim.d2948c859d65a8182b38.jpeg",
     "index.html": "/goit-react-hw-05-movies/index.html",
     "main.17654e45.css.map": "/goit-react-hw-05-movies/static/css/main.17654e45.css.map",
-    "main.ee127981.js.map": "/goit-react-hw-05-movies/static/js/main.ee127981.js.map"
+    "main.42fb7e07.js.map": "/goit-react-hw-05-movies/static/js/main.42fb7e07.js.map"
   },
   "entrypoints": [
     "static/css/main.17654e45.css",
-    "static/js/main.ee127981.js"
+    "static/js/main.42fb7e07.js"
   ]
 }
