@@ -19,7 +19,6 @@ const MovieDetails = () => {
       try {
         const data = await api.fetchMovieDetails(movieId);
         setMovie(data);
-        console.log(data);
 
         setStatus(Status.RESOLVED);
       } catch (error) {
