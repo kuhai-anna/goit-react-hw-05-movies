@@ -1,5 +1,7 @@
+import { Section } from 'components/Section/Section';
+
 const Movies = () => {
-  return <div>Movies</div>;
+  return <Section title={'Movies'}></Section>;
 };
 
 export default Movies;
