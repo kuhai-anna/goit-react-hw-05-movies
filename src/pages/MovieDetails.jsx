@@ -1,6 +1,7 @@
 import { Section } from 'components/Section/Section';
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Status } from 'constants/status';
 import { api } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
@@ -83,6 +84,16 @@ const MovieDetails = () => {
       </>
     );
   }
+};
+
+MovieDetails.propTypes = {
+  url: PropTypes.string,
+  title: PropTypes.string,
+  name: PropTypes.string,
+  vote: PropTypes.number,
+  overview: PropTypes.string,
+  genres: PropTypes.array,
+  date: PropTypes.string,
 };
 
 export default MovieDetails;
