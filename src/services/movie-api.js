@@ -17,7 +17,7 @@ const fetchTrendingMovies = async page => {
 
 const fetchMoviesWithQuery = async (searchQuery, page) => {
   const searchParams = new URLSearchParams({
-    key: `${KEY}`,
+    api_key: `${KEY}`,
     language: 'en-US',
     query: `${searchQuery}`,
     include_adult: 'false',
@@ -30,7 +30,7 @@ const fetchMoviesWithQuery = async (searchQuery, page) => {
 
 const fetchMovieDetails = async moviId => {
   const searchParams = new URLSearchParams({
-    key: `${KEY}`,
+    api_key: `${KEY}`,
     language: 'en-US',
   });
 
@@ -42,7 +42,7 @@ const fetchMovieDetails = async moviId => {
 
 const fetchMovieCredits = async moviId => {
   const searchParams = new URLSearchParams({
-    key: `${KEY}`,
+    api_key: `${KEY}`,
     language: 'en-US',
   });
 
@@ -54,7 +54,7 @@ const fetchMovieCredits = async moviId => {
 
 const fetchMovieReviews = async moviId => {
   const searchParams = new URLSearchParams({
-    key: `${KEY}`,
+    api_key: `${KEY}`,
     language: 'en-US',
     page: '1',
   });
