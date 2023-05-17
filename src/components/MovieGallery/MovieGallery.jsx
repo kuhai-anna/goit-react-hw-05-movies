@@ -3,10 +3,18 @@ import { Gallery } from './MovieGallery.styled';
 import { MovieGalleryItem } from './MovieGalleryItem/MovieGalleryItem';
 
 export const MovieGallery = ({ movies }) => {
+  console.log(movies);
+
   return (
     <Gallery>
-      {movies.map(movie => (
-        <MovieGalleryItem key={movie} movie={movie} />
+      {movies.map(({ id, title, poster_path, name }) => (
+        <MovieGalleryItem
+          key={id}
+          movieId={id}
+          title={title}
+          name={name}
+          url={poster_path}
+        />
       ))}
     </Gallery>
   );
@@ -14,4 +22,5 @@ export const MovieGallery = ({ movies }) => {
 
 MovieGallery.propTypes = {
   movies: PropTypes.array.isRequired,
+  id: PropTypes.number, //видає помилку, коли isRequired
 };
