@@ -5,22 +5,25 @@ import { Status } from 'constants/status';
 import { api } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
 import { ReviewsItem } from './ReviewsItem/ReviewsItem';
-
-// We don`t have any reviews for this movie
+import { Button } from 'components/Button/Button';
 
 const Review = () => {
   const { movieId } = useParams();
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState();
   const [reviews, setReviews] = useState({});
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
+  const notLastPage = page < Math.ceil(totalPages / 20);
 
   useEffect(() => {
     async function getMovieDetails() {
       setStatus(Status.PENDING);
       try {
-        const data = await api.fetchMovieReviews(movieId);
+        const data = await api.fetchMovieReviews(movieId, page);
         setReviews(data);
 
+        setTotalPages(data.total_pages);
         setStatus(Status.RESOLVED);
       } catch (error) {
         setError(error);
@@ -29,7 +32,12 @@ const Review = () => {
     }
 
     getMovieDetails();
-  }, [movieId]);
+  }, [movieId, page]);
+
+  // збільшення номеру сторінки при кліку на кнопку
+  const loadMoreBtnClick = () => {
+    setPage(prevState => prevState + 1);
+  };
 
   // рендер компонентів в залежності від статусу
   if (status === Status.PENDING) {
@@ -37,7 +45,9 @@ const Review = () => {
   }
 
   if (status === Status.REJECTED) {
-    return <p>{`Whoops, something went wrong. ${error.message}`}</p>;
+    return (
+      <p>{`Whoops, something went wrong. ${error.message}. Please try again later.`}</p>
+    );
   }
 
   if (status === Status.RESOLVED) {
@@ -54,6 +64,7 @@ const Review = () => {
             ))}
           </ul>
         )}
+        {notLastPage && <Button onClick={loadMoreBtnClick} />}
       </>
     );
   }
