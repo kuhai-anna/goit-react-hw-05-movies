@@ -1,18 +1,21 @@
 import { Section } from 'components/Section/Section';
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Status } from 'constants/status';
 import { api } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
 import { MovieGalleryErrorView } from 'components/MovieGallery/MovieGalleryErrorView/MovieGalleryErrorView';
 import { GenresList } from 'components/GenresList/GenresList';
+import { BackLink } from 'components/BackLink/BackLink';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     async function getMovieDetails() {
@@ -61,6 +64,7 @@ const MovieDetails = () => {
     return (
       <>
         <Section>
+          <BackLink to={backLinkHref}>Back</BackLink>
           <img src={`https://image.tmdb.org/t/p/w500/${url}`} alt={title} />
           <h1>{movieTitle}</h1>
           <span>{`User Score: ${userScore}`}</span>
