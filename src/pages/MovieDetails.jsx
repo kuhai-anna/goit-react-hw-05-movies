@@ -56,7 +56,7 @@ const MovieDetails = () => {
     } = movie;
 
     const movieTitle = `${title || name} (${Number.parseInt(date)})`;
-    const userScore = `${vote * 10} %`;
+    const userScore = `${Math.round(vote * 10)} %`;
 
     return (
       <>
