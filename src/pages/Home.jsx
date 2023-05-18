@@ -49,7 +49,7 @@ const Home = () => {
   if (status === Status.REJECTED) {
     return (
       <MovieGalleryErrorView
-        message={`Whoops, something went wrong. ${error.message}`}
+        message={`Whoops, something went wrong. ${error.message}. Please try again later.`}
       />
     );
   }

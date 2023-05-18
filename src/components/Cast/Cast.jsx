@@ -36,7 +36,9 @@ const Cast = () => {
   }
 
   if (status === Status.REJECTED) {
-    return <p>{`Whoops, something went wrong. ${error.message}`}</p>;
+    return (
+      <p>{`Whoops, something went wrong. ${error.message}. Please try again later.`}</p>
+    );
   }
 
   // додати картинку по замовчуванню
