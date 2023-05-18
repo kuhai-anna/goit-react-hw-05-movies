@@ -52,11 +52,11 @@ const fetchMovieCredits = async moviId => {
   return data;
 };
 
-const fetchMovieReviews = async moviId => {
+const fetchMovieReviews = async (moviId, page) => {
   const searchParams = new URLSearchParams({
     api_key: `${KEY}`,
     language: 'en-US',
-    page: '1',
+    page: `${page}`,
   });
 
   const { data } = await axios.get(
