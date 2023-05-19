@@ -8,6 +8,7 @@ import { Loader } from 'components/Loader/Loader';
 import { MovieGalleryErrorView } from 'components/MovieGallery/MovieGalleryErrorView/MovieGalleryErrorView';
 import { GenresList } from 'components/GenresList/GenresList';
 import { BackLink } from 'components/BackLink/BackLink';
+import poster from 'images/frame-neon.jpeg';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -65,7 +66,10 @@ const MovieDetails = () => {
       <>
         <Section>
           <BackLink to={backLinkHref}>Back</BackLink>
-          <img src={`https://image.tmdb.org/t/p/w500/${url}`} alt={title} />
+          <img
+            src={url ? `https://image.tmdb.org/t/p/w500/${url}` : poster}
+            alt={title}
+          />
           <h1>{movieTitle}</h1>
           <span>{`User Score: ${userScore}`}</span>
           <h3>Overview</h3>
