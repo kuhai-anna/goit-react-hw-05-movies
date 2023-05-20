@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { Status } from 'constants/status';
 import { api } from 'services/movie-api';
 import { Section } from 'components/Section/Section';
 import { Loader } from 'components/Loader/Loader';
 import { MovieGalleryErrorView } from 'components/MovieGallery/MovieGalleryErrorView/MovieGalleryErrorView';
-import { GenresList } from 'components/GenresList/GenresList';
 import { BackLink } from 'components/BackLink/BackLink';
-import poster from 'images/frame-neon.jpeg';
+import { MovieInfo } from 'components/MovieInfo/MovieInfo';
+import { TextLink } from 'components/BackLink/BackLink.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -49,33 +48,13 @@ const MovieDetails = () => {
   }
 
   if (status === Status.RESOLVED) {
-    const {
-      poster_path: url,
-      title,
-      name,
-      vote_average: vote,
-      overview,
-      genres,
-      release_date: date,
-    } = movie;
-
-    const movieTitle = `${title || name} (${Number.parseInt(date)})`;
-    const userScore = `${Math.round(vote * 10)} %`;
-
     return (
       <>
         <Section>
-          <BackLink to={backLinkHref}>Back</BackLink>
-          <img
-            src={url ? `https://image.tmdb.org/t/p/w500/${url}` : poster}
-            alt={title}
-          />
-          <h1>{movieTitle}</h1>
-          <span>{`User Score: ${userScore}`}</span>
-          <h3>Overview</h3>
-          <p>{overview}</p>
-          <h3>Genres</h3>
-          <GenresList genres={genres} />
+          <BackLink to={backLinkHref}>
+            <TextLink>Back</TextLink>
+          </BackLink>
+          <MovieInfo movie={movie} />
         </Section>
         <Section>
           <h3>Additional information</h3>
@@ -92,16 +71,6 @@ const MovieDetails = () => {
       </>
     );
   }
-};
-
-MovieDetails.propTypes = {
-  url: PropTypes.string,
-  title: PropTypes.string,
-  name: PropTypes.string,
-  vote: PropTypes.number,
-  overview: PropTypes.string,
-  genres: PropTypes.array,
-  date: PropTypes.string,
 };
 
 export default MovieDetails;
