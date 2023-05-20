@@ -5,6 +5,7 @@ import {
   MovieLink,
   MovieName,
   MovieWrap,
+  NameWrap,
   Poster,
 } from './MovieGalleryItem.styled';
 import poster from 'images/frame-neon.jpeg';
@@ -23,7 +24,9 @@ export const MovieGalleryItem = ({ movieId, title, name, url }) => {
             src={url ? `https://image.tmdb.org/t/p/w500/${url}` : poster}
             alt={title}
           />
-          <MovieName>{movieTitle || movieName}</MovieName>
+          <NameWrap>
+            <MovieName>{movieTitle || movieName}</MovieName>
+          </NameWrap>
         </MovieWrap>
       </MovieLink>
     </GalleryItem>
