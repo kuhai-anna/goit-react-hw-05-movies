@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { AiOutlineDoubleLeft } from 'react-icons/ai';
+import { StyledLink } from './BackLink.styled';
 
 export const BackLink = ({ to, children }) => {
   return (
-    <Link to={to}>
-      <AiOutlineDoubleLeft size="16" />
+    <StyledLink to={to}>
+      <AiOutlineDoubleLeft size="18" />
       {children}
-    </Link>
+    </StyledLink>
   );
 };
 
 BackLink.propTypes = {
   to: PropTypes.object.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired,
 };
