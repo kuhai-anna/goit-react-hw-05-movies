@@ -1,9 +1,9 @@
-import { Section } from 'components/Section/Section';
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Status } from 'constants/status';
 import { api } from 'services/movie-api';
+import { Section } from 'components/Section/Section';
 import { Loader } from 'components/Loader/Loader';
 import { MovieGalleryErrorView } from 'components/MovieGallery/MovieGalleryErrorView/MovieGalleryErrorView';
 import { GenresList } from 'components/GenresList/GenresList';
