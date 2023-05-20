@@ -2,7 +2,7 @@ import { ThreeDots } from 'react-loader-spinner';
 
 export const Loader = () => {
   const loaderParams = {
-    color: '#00616ef4',
+    color: '#ffccea',
     width: '100px',
     ariaLabel: 'three-dots-loading',
   };
