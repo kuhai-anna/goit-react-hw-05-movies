@@ -19,7 +19,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     background-color: ${props => props.theme.colors.bgd};
-    color: ${props => props.theme.colors.text};
+    color: ${props => props.theme.colors.mainText};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
