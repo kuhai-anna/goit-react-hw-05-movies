@@ -16,15 +16,16 @@ export const Field = styled(FormikField)`
   display: inline-block;
   width: 100%;
   font: inherit;
-  font-size: 16px;
+  font-size: 18px;
   border: none;
   outline: none;
   background-color: ${props => props.theme.colors.bgdForm};
-  padding: ${props => props.theme.spacing(0)} ${props => props.theme.spacing(2)};
-  color: ${props => props.theme.colors.textAccent};
+  padding: ${props => props.theme.spacing(0)} ${props => props.theme.spacing(3)};
+  color: ${props => props.theme.colors.textForm};
 
   ::placeholder {
     font: inherit;
-    font-size: 16px;
+    color: ${props => props.theme.colors.placeholder};
+    font-size: 18px;
   }
 `;
