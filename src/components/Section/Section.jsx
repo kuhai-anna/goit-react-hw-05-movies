@@ -7,6 +7,7 @@ import {
   SectionTitle,
   Header,
   Footer,
+  Main,
 } from './Section.styled';
 
 export const Section = ({ tag, mainTitle, title, children }) => {
@@ -21,7 +22,7 @@ export const Section = ({ tag, mainTitle, title, children }) => {
       );
       break;
     case 'main':
-      sectionContent = <main>{children}</main>;
+      sectionContent = <Main>{children}</Main>;
       break;
     case 'footer':
       sectionContent = (
