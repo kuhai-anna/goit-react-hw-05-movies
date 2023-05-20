@@ -13,7 +13,6 @@ export const SharedLayout = () => {
             <Link to="/">Home</Link>
             <Link to="/movies">Movies</Link>
           </Nav>
-          <button>Button</button>
         </HeaderWrap>
       </Section>
       <Section tag={'main'}>
