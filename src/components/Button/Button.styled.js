@@ -13,15 +13,14 @@ export const LoadMoreBtn = styled.button`
 
   font-size: 16px;
   font-weight: 500;
-  color: ${props => props.theme.colors.icons};
+  color: ${props => props.theme.colors.text};
 
-  transition-property: background-color, color;
+  transition-property: background-color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
     background-color: ${props => props.theme.colors.btnHover};
-    color: ${props => props.theme.colors.iconsHover};
   }
 `;
