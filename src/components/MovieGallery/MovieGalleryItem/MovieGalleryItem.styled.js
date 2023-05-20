@@ -1,20 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const GalleryItem = styled.li`
-  border-radius: ${props => props.theme.spacing(1)};
-`;
+export const GalleryItem = styled.li``;
 
 export const MovieLink = styled(NavLink)`
   display: block;
-  /* width: 100%; */
   max-width: 320px;
   border-radius: ${props => props.theme.spacing(1)};
 
   text-decoration: none;
   color: ${props => props.theme.colors.text};
 
-  background-color: #191919;
+  background-color: transparent;
 
   transform: scale(1);
   transition: transform, background-color,
@@ -22,8 +19,8 @@ export const MovieLink = styled(NavLink)`
 
   &:hover,
   &:focus {
-    transform: scale(1.02);
-    box-shadow: 0px 0px 13px 0px #dfdfdf;
+    transform: scale(1.01);
+    box-shadow: 0px 0px 12px 3px rgba(255, 184, 224, 0.56);
   }
 `;
 
@@ -34,17 +31,36 @@ export const MovieWrap = styled.div`
 
 export const Poster = styled.img`
   /* width: 100%; */
+  position: relative;
   width: 320px;
   height: 480px;
 
-  border-top-left-radius: ${props => props.theme.spacing(1)};
-  border-top-right-radius: ${props => props.theme.spacing(1)};
+  border-radius: ${props => props.theme.spacing(1)};
 
   object-fit: cover;
 `;
 
+export const NameWrap = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: transform(-50%, -50%);
+
+  border-radius: ${props => props.theme.spacing(1)};
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 63.48%,
+    rgba(0, 0, 0, 0.9) 92.16%
+  );
+`;
+
 export const MovieName = styled.h3`
-  display: block;
-  padding: ${props => props.theme.spacing(2)};
-  height: 56px;
+  padding: ${props => props.theme.spacing(5)};
+  font-size: 16px;
+  text-transform: uppercase;
 `;
