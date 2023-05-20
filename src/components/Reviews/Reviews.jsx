@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { Status } from 'constants/status';
 import { api } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
-import { ReviewsItem } from './ReviewsItem/ReviewsItem';
 import { Button } from 'components/Button/Button';
+import { ReviewsItem } from './ReviewsItem/ReviewsItem';
 
 const Review = () => {
   const { movieId } = useParams();
