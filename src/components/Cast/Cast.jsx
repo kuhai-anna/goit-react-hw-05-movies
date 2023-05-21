@@ -14,20 +14,31 @@ const Cast = () => {
   const [status, setStatus] = useState(Status.IDLE);
 
   useEffect(() => {
+    // переривання http-запиту
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     async function getMovieDetails() {
       setStatus(Status.PENDING);
       try {
-        const { cast } = await api.fetchMovieCredits(movieId);
+        const { cast } = await api.fetchMovieCredits(movieId, signal);
         setCast(cast);
 
         setStatus(Status.RESOLVED);
       } catch (error) {
-        setError(error);
-        setStatus(Status.REJECTED);
+        if (signal.aborted) {
+          return; // не сповіщаємо користувача про переривання запиту
+        } else {
+          setError(error);
+          setStatus(Status.REJECTED);
+        }
       }
     }
 
     getMovieDetails();
+    return () => {
+      abortController.abort();
+    };
   }, [movieId]);
 
   // рендер компонентів в залежності від статусу

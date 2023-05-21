@@ -26,6 +26,10 @@ const Movies = () => {
   };
 
   useEffect(() => {
+    // переривання http-запиту
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     if (!searchQuery) {
       // перший рендер - це порожній рядок, не робимо http-запит
       return;
@@ -36,7 +40,8 @@ const Movies = () => {
       try {
         const { results, total_pages } = await api.fetchMoviesWithQuery(
           searchQuery,
-          page
+          page,
+          signal
         );
 
         if (results.length === 0) {
@@ -52,12 +57,19 @@ const Movies = () => {
         setTotalPages(total_pages);
         setStatus(Status.RESOLVED);
       } catch (error) {
-        setError(error);
-        setStatus(Status.REJECTED);
+        if (signal.aborted) {
+          return; // не сповіщаємо користувача про переривання запиту
+        } else {
+          setError(error);
+          setStatus(Status.REJECTED);
+        }
       }
     }
 
     getMovieWithQuery();
+    return () => {
+      abortController.abort();
+    };
   }, [searchQuery, page]);
 
   // збільшення номеру сторінки при кліку на кнопку

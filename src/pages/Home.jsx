@@ -16,10 +16,17 @@ const Home = () => {
   const notLastPage = page < Math.ceil(totalPages / 20);
 
   useEffect(() => {
+    // переривання http-запиту
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     async function getTrandingMovies() {
       setStatus(Status.PENDING);
       try {
-        const { results, total_pages } = await api.fetchTrendingMovies(page);
+        const { results, total_pages } = await api.fetchTrendingMovies(
+          page,
+          signal
+        );
 
         page === 1
           ? setMovies(results)
@@ -28,12 +35,19 @@ const Home = () => {
         setTotalPages(total_pages);
         setStatus(Status.RESOLVED);
       } catch (error) {
-        setError(error);
-        setStatus(Status.REJECTED);
+        if (signal.aborted) {
+          return; // не сповіщаємо користувача про переривання запиту
+        } else {
+          setError(error);
+          setStatus(Status.REJECTED);
+        }
       }
     }
 
     getTrandingMovies();
+    return () => {
+      abortController.abort();
+    };
   }, [page]);
 
   // збільшення номеру сторінки при кліку на кнопку

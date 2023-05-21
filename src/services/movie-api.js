@@ -3,19 +3,20 @@ import axios from 'axios';
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const KEY = 'c87cc88294da77d4343c2f6d8278b44b';
 
-const fetchTrendingMovies = async page => {
+const fetchTrendingMovies = async (page, signal) => {
   const searchParams = new URLSearchParams({
     api_key: `${KEY}`,
     page: `${page}`,
   });
 
   const { data } = await axios.get(
-    `${BASE_URL}trending/all/day?${searchParams}`
+    `${BASE_URL}trending/all/day?${searchParams}`,
+    { signal }
   );
   return data;
 };
 
-const fetchMoviesWithQuery = async (searchQuery, page) => {
+const fetchMoviesWithQuery = async (searchQuery, page, signal) => {
   const searchParams = new URLSearchParams({
     api_key: `${KEY}`,
     language: 'en-US',
@@ -24,14 +25,17 @@ const fetchMoviesWithQuery = async (searchQuery, page) => {
     page: `${page}`,
   });
 
-  const { data } = await axios.get(`${BASE_URL}search/movie?${searchParams}`);
+  const { data } = await axios.get(`${BASE_URL}search/movie?${searchParams}`, {
+    signal,
+  });
   return data;
 };
 
-const fetchMovieDetails = async moviId => {
+const fetchMovieDetails = async (moviId, signal) => {
   const searchParams = new URLSearchParams({
     api_key: `${KEY}`,
     language: 'en-US',
+    signal,
   });
 
   const { data } = await axios.get(
@@ -40,19 +44,20 @@ const fetchMovieDetails = async moviId => {
   return data;
 };
 
-const fetchMovieCredits = async moviId => {
+const fetchMovieCredits = async (moviId, signal) => {
   const searchParams = new URLSearchParams({
     api_key: `${KEY}`,
     language: 'en-US',
   });
 
   const { data } = await axios.get(
-    `${BASE_URL}movie/${moviId}/credits?${searchParams}`
+    `${BASE_URL}movie/${moviId}/credits?${searchParams}`,
+    { signal }
   );
   return data;
 };
 
-const fetchMovieReviews = async (moviId, page) => {
+const fetchMovieReviews = async (moviId, page, signal) => {
   const searchParams = new URLSearchParams({
     api_key: `${KEY}`,
     language: 'en-US',
@@ -60,7 +65,8 @@ const fetchMovieReviews = async (moviId, page) => {
   });
 
   const { data } = await axios.get(
-    `${BASE_URL}movie/${moviId}/reviews?${searchParams}`
+    `${BASE_URL}movie/${moviId}/reviews?${searchParams}`,
+    { signal }
   );
   return data;
 };

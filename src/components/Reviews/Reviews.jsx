@@ -18,21 +18,32 @@ const Review = () => {
   const notLastPage = page < Math.ceil(totalPages / 20);
 
   useEffect(() => {
+    // переривання http-запиту
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     async function getMovieDetails() {
       setStatus(Status.PENDING);
       try {
-        const data = await api.fetchMovieReviews(movieId, page);
+        const data = await api.fetchMovieReviews(movieId, page, signal);
         setReviews(data);
 
         setTotalPages(data.total_pages);
         setStatus(Status.RESOLVED);
       } catch (error) {
-        setError(error);
-        setStatus(Status.REJECTED);
+        if (signal.aborted) {
+          return; // не сповіщаємо користувача про переривання запиту
+        } else {
+          setError(error);
+          setStatus(Status.REJECTED);
+        }
       }
     }
 
     getMovieDetails();
+    return () => {
+      abortController.abort();
+    };
   }, [movieId, page]);
 
   // збільшення номеру сторінки при кліку на кнопку
