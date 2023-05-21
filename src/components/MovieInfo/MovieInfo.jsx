@@ -30,6 +30,8 @@ export const MovieInfo = ({ movie }) => {
       <MoviePoster
         src={url ? `https://image.tmdb.org/t/p/w500/${url}` : poster}
         alt={title}
+        width={'288'}
+        height={'432'}
       />
       <InfoWrap>
         <MovieTitle>{movieTitle}</MovieTitle>
