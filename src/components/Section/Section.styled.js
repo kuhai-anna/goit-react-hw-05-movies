@@ -39,9 +39,9 @@ export const MainTitle = styled.h1`
 `;
 
 export const SectionTitle = styled.h2`
-  margin-bottom: ${props => props.theme.spacing(4)};
+  margin-bottom: ${props => props.theme.spacing(6)};
 
-  font-size: 24px;
   text-align: center;
-  color: ${props => props.theme.colors.text};
+  font-size: 20px;
+  color: ${props => props.theme.colors.textAccent};
 `;
