@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Status } from 'constants/status';
 import { api } from 'services/movie-api';
 import { Section } from 'components/Section/Section';
@@ -8,6 +8,7 @@ import { MovieGalleryErrorView } from 'components/MovieGallery/MovieGalleryError
 import { BackLink } from 'components/BackLink/BackLink';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { TextLink } from 'components/BackLink/BackLink.styled';
+import { AdditionalInfo } from 'components/AdditionalInfo/AdditionalInfo';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -56,16 +57,8 @@ const MovieDetails = () => {
           </BackLink>
           <MovieInfo movie={movie} />
         </Section>
-        <Section>
-          <h3>Additional information</h3>
-          <ul>
-            <li>
-              <Link to="cast">Cast</Link>
-            </li>
-            <li>
-              <Link to="reviews">Reviews</Link>
-            </li>
-          </ul>
+        <Section title={'Additional information'}>
+          <AdditionalInfo />
           <Outlet />
         </Section>
       </>
