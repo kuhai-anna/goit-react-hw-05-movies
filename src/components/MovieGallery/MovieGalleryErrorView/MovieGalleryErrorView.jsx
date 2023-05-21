@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import { ErrorBox, ErrorText } from './MovieGalleryErrorView.styled';
+import { ErrorText } from './MovieGalleryErrorView.styled';
 
 export const MovieGalleryErrorView = ({ message }) => {
   return (
-    <ErrorBox role="alert">
+    <div role="alert">
       <ErrorText>{message}</ErrorText>
-    </ErrorBox>
+    </div>
   );
 };
 
