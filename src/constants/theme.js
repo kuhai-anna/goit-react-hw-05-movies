@@ -9,6 +9,7 @@ export const theme = {
     iconsHover: '#c968a1',
     placeholder: '#c968a1',
     loader: '#ffccea',
+    border: '#c968a1',
     bgd: '#021539',
     bgdAccent: '#143675',
     bgdForm: '#ffccea',
