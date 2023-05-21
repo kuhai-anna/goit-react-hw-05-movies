@@ -5,8 +5,6 @@ export const StyledLink = styled(NavLink)`
   display: inline-flex;
   justify-content: center;
   align-content: center;
-  margin-bottom: ${props => props.theme.spacing(5)};
-  ${props => props.theme.spacing(0)};
   padding: ${props => props.theme.spacing(2)} ${props => props.theme.spacing(4)};
   min-width: 98px;
 
