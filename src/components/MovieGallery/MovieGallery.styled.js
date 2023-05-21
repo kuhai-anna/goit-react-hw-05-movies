@@ -6,4 +6,5 @@ export const Gallery = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 16px;
+  margin-top: ${props => props.theme.spacing(5)};
 `;
