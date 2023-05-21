@@ -31,16 +31,12 @@ export const Container = styled.div`
 `;
 
 export const MainTitle = styled.h1`
-  margin-bottom: ${props => props.theme.spacing(5)};
-
   font-size: 38px;
   text-align: center;
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.textAccent};
 `;
 
 export const SectionTitle = styled.h2`
-  margin-bottom: ${props => props.theme.spacing(6)};
-
   text-align: center;
   font-size: 20px;
   color: ${props => props.theme.colors.textAccent};
