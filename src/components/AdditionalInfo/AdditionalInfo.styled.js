@@ -9,7 +9,7 @@ export const LinkList = styled.ul`
 `;
 
 export const AdditionalInfoLink = styled(StyledLink)`
-  margin-bottom: ${props => props.theme.spacing(7)};
+  margin-top: ${props => props.theme.spacing(6)};
 
   &.active {
     background-color: ${props => props.theme.colors.btnHover};
