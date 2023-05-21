@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-// import { Gallery } from 'components/MovieGallery/MovieGallery.styled';
 
 export const CastGallery = styled.ul`
   display: grid;
   max-width: calc(100vw - 32px);
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
   grid-gap: 16px;
   margin-top: 0;
   margin-bottom: 0;
