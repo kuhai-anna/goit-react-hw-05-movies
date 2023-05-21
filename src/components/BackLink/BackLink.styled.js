@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-export const StyledLink = styled(Link)`
-  display: flex;
+export const StyledLink = styled(NavLink)`
+  display: inline-flex;
+  justify-content: center;
   align-content: center;
   margin-bottom: ${props => props.theme.spacing(5)};
   ${props => props.theme.spacing(0)};
   padding: ${props => props.theme.spacing(2)} ${props => props.theme.spacing(4)};
-  width: 98px;
+  min-width: 98px;
 
   background-color: ${props => props.theme.colors.bgdBtn};
   border: none;
