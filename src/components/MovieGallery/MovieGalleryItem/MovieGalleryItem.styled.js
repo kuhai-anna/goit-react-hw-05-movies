@@ -30,10 +30,9 @@ export const MovieWrap = styled.div`
 `;
 
 export const Poster = styled.img`
-  /* width: 100%; */
   position: relative;
-  width: 320px;
-  height: 480px;
+  width: 288px;
+  height: 432px;
 
   border-radius: ${props => props.theme.spacing(1)};
 
