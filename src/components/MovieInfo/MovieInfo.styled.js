@@ -6,6 +6,7 @@ export const MovieContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: ${props => props.theme.spacing(3)};
+  margin-top: ${props => props.theme.spacing(5)};
 `;
 
 export const MoviePoster = styled.img`
