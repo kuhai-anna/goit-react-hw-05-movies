@@ -1,3 +1,4 @@
+import { SectionTitle } from 'components/Section/Section.styled';
 import styled from 'styled-components';
 
 export const MovieContainer = styled.div`
@@ -8,13 +9,13 @@ export const MovieContainer = styled.div`
 `;
 
 export const MoviePoster = styled.img`
-  width: 320px;
+  width: 288px;
   border-radius: ${props => props.theme.spacing(1)};
 `;
 
 export const InfoWrap = styled.div`
   min-width: 288px;
-  max-width: calc(100vw - 364px);
+  max-width: calc(100vw - 332px);
 `;
 
 export const MovieTitle = styled.h1`
@@ -28,11 +29,10 @@ export const MovieScore = styled.p`
   margin-bottom: ${props => props.theme.spacing(6)};
 `;
 
-export const Overview = styled.h2`
+export const Overview = styled(SectionTitle)`
   margin-bottom: ${props => props.theme.spacing(3)};
 
-  font-size: 20px;
-  color: ${props => props.theme.colors.textAccent};
+  text-align: start;
 `;
 
 export const OverviewText = styled.p`
