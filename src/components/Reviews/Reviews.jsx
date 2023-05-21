@@ -6,6 +6,7 @@ import { api } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
 import { Button } from 'components/Button/Button';
 import { ReviewsItem } from './ReviewsItem/ReviewsItem';
+import { AlertMessage } from './Reviews.styled';
 
 const Review = () => {
   const { movieId } = useParams();
@@ -56,7 +57,7 @@ const Review = () => {
     return (
       <>
         {results.length === 0 ? (
-          <p>We don`t have any reviews for this movie</p>
+          <AlertMessage>There are no reviews for this movie.</AlertMessage>
         ) : (
           <ul>
             {results.map(({ author, content }) => (
