@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Section } from 'components/Section/Section';
+import { Loader } from 'components/Loader/Loader';
 import { AppWraper, Link } from './SharedLayout.styled';
 import { Nav } from './SharedLayout.styled';
 import { HeaderWrap } from './SharedLayout.styled';
@@ -16,7 +18,9 @@ export const SharedLayout = () => {
         </HeaderWrap>
       </Section>
       <Section tag={'main'}>
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </Section>
       <Section tag={'footer'}>
         <p>&copy; 2023 | All Rights Reserved</p>
