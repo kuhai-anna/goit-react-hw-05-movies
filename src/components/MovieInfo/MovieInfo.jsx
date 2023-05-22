@@ -22,7 +22,8 @@ export const MovieInfo = ({ movie }) => {
     genres,
     release_date: date,
   } = movie;
-  const movieTitle = `${title || name} (${Number.parseInt(date)})`;
+  const isDate = `(${Number.parseInt(date)})`;
+  const movieTitle = `${title || name} ${date ? isDate : ''}`;
   const userScore = `${Math.round(vote * 10)} %`;
 
   return (
