@@ -12,7 +12,7 @@ const Review = () => {
   const { movieId } = useParams();
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState();
-  const [reviews, setReviews] = useState({});
+  const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
   const notLastPage = page < Math.ceil(totalPages / 20);
@@ -25,10 +25,14 @@ const Review = () => {
     async function getMovieDetails() {
       setStatus(Status.PENDING);
       try {
-        const data = await api.fetchMovieReviews(movieId, page, signal);
-        setReviews(data);
+        const { results, total_pages } = await api.fetchMovieReviews(
+          movieId,
+          page,
+          signal
+        );
+        setReviews(results);
 
-        setTotalPages(data.total_pages);
+        setTotalPages(total_pages);
         setStatus(Status.RESOLVED);
       } catch (error) {
         if (signal.aborted) {
@@ -63,15 +67,13 @@ const Review = () => {
   }
 
   if (status === Status.RESOLVED) {
-    const { id, results } = reviews;
-
     return (
       <>
-        {results.length === 0 ? (
+        {reviews.length === 0 ? (
           <AlertMessage>There are no reviews for this movie.</AlertMessage>
         ) : (
           <ul>
-            {results.map(({ author, content }) => (
+            {reviews.map(({ author, content, id }) => (
               <ReviewsItem key={id} author={author} content={content} />
             ))}
           </ul>
