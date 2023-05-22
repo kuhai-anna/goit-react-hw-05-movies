@@ -57,7 +57,7 @@ const Review = () => {
 
   // рендер компонентів в залежності від статусу
   if (status === Status.PENDING) {
-    return <Loader />;
+    return <Loader size={'10vh'} />;
   }
 
   if (status === Status.REJECTED) {

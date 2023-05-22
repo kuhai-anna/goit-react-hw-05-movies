@@ -85,7 +85,7 @@ const Movies = () => {
 
       {status === Status.PENDING ? (
         <Section>
-          <Loader />
+          <Loader size={'55vh'} />
         </Section>
       ) : status === Status.REJECTED ? (
         <Section>

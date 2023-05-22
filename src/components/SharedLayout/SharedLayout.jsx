@@ -18,7 +18,7 @@ export const SharedLayout = () => {
         </HeaderWrap>
       </Section>
       <Section tag={'main'}>
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader size={'75vh'} />}>
           <Outlet />
         </Suspense>
       </Section>

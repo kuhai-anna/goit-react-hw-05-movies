@@ -72,7 +72,7 @@ const MovieDetails = () => {
         </Section>
         <Section title={'Additional information'}>
           <AdditionalInfo />
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<Loader size={'10vh'} />}>
             <Outlet />
           </Suspense>
         </Section>

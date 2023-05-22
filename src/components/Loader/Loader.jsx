@@ -1,10 +1,8 @@
+import { PropTypes } from 'prop-types';
 import { ThreeDots } from 'react-loader-spinner';
-import { useLocation } from 'react-router-dom';
 
-export const Loader = () => {
-  const location = useLocation();
-  const moviesPage = location.pathname === '/movies';
-  const loaderWidth = moviesPage ? '55vh' : '75vh';
+export const Loader = ({ size }) => {
+  const loaderWidth = size ? `${size}` : '75vh';
 
   const loaderParams = {
     color: '#ffccea',
@@ -25,4 +23,8 @@ export const Loader = () => {
       visible={true}
     />
   );
+};
+
+Loader.propTypes = {
+  size: PropTypes.string,
 };
