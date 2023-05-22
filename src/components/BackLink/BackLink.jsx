@@ -12,6 +12,6 @@ export const BackLink = ({ to, children }) => {
 };
 
 BackLink.propTypes = {
-  to: PropTypes.object.isRequired,
+  to: PropTypes.any.isRequired,
   children: PropTypes.any.isRequired,
 };
