@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Status } from 'constants/status';
 import { api } from 'services/movie-api';
+import { TextLink } from 'components/BackLink/BackLink.styled';
 import { Section } from 'components/Section/Section';
 import { Loader } from 'components/Loader/Loader';
 import { MovieGalleryErrorView } from 'components/MovieGallery/MovieGalleryErrorView/MovieGalleryErrorView';
 import { BackLink } from 'components/BackLink/BackLink';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
-import { TextLink } from 'components/BackLink/BackLink.styled';
 import { AdditionalInfo } from 'components/AdditionalInfo/AdditionalInfo';
+import { Suspense } from 'react';
+import { useRef } from 'react';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -16,7 +18,7 @@ const MovieDetails = () => {
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinLocationRef = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     // переривання http-запиту
@@ -63,14 +65,16 @@ const MovieDetails = () => {
     return (
       <>
         <Section>
-          <BackLink to={backLinkHref}>
+          <BackLink to={backLinLocationRef.current}>
             <TextLink>Back</TextLink>
           </BackLink>
           <MovieInfo movie={movie} />
         </Section>
         <Section title={'Additional information'}>
           <AdditionalInfo />
-          <Outlet />
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
         </Section>
       </>
     );
