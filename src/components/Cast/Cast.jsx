@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Status } from 'constants/status';
 import { api } from 'services/movie-api';
 import { Loader } from 'components/Loader/Loader';
-import { CastGallery } from './Cast.styled';
+import { AlertMessage, CastGallery } from './Cast.styled';
 import { CastItem } from './CastItem/CastItem';
 
 const Cast = () => {
@@ -56,11 +56,17 @@ const Cast = () => {
   if (status === Status.RESOLVED) {
     return (
       <>
-        <CastGallery>
-          {cast.map(({ id, character, name, profile_path: url }) => (
-            <CastItem key={id} url={url} name={name} character={character} />
-          ))}
-        </CastGallery>
+        {cast.length === 0 ? (
+          <AlertMessage>
+            The actors of this movie are not represented.
+          </AlertMessage>
+        ) : (
+          <CastGallery>
+            {cast.map(({ id, character, name, profile_path: url }) => (
+              <CastItem key={id} url={url} name={name} character={character} />
+            ))}
+          </CastGallery>
+        )}
       </>
     );
   }

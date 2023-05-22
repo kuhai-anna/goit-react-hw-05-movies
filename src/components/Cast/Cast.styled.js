@@ -12,3 +12,8 @@ export const CastGallery = styled.ul`
   margin-left: auto;
   margin-right: auto;
 `;
+
+export const AlertMessage = styled.p`
+  padding: ${props => props.theme.spacing(6)} ${props => props.theme.spacing(0)};
+  text-align: center;
+`;
