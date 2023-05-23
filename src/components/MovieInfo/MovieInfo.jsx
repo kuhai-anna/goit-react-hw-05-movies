@@ -42,7 +42,11 @@ export const MovieInfo = ({ movie }) => {
           {overview ? `${overview}` : 'This movie has no reviews.'}
         </OverviewText>
         <Genres>Genres</Genres>
-        <GenresList genres={genres} />
+        {genres.length !== 0 ? (
+          <GenresList genres={genres} />
+        ) : (
+          <span> - </span>
+        )}
       </InfoWrap>
     </MovieContainer>
   );
